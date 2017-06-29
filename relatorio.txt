@@ -1,0 +1,12 @@
+Relatório da QLeveTudo versão 2.0
+
+
+Nesta versão primeiro foi criada uma biblioteca dinamica com as funções do 
+programa para futura reutilização do código, e após, foram implementadas as modificações necessárias
+em "fornecedor" e no "bancodados", transformando as listas de produtos em um map que guarda o codigo
+do produto e um ponteiro para ele, porem, nestas modificações, apesar de compilar, surgiu um defeito
+no armazenamento do produto no objeto fornecedor, talvez pela lista de ponteiros ainda utilizada para 
+os fornecedores.
+A mudança foi basicamente a troca do tipo Lista<*produto> para o tipo map<string, *produto>, surgindo
+a necessidade de mudança das funções como a getTamanho da lista para a size do map, a utilização dos
+iteradores, entre outras.
