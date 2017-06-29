@@ -12,11 +12,12 @@
 
 #include <iostream>
 #include <ctime>
+#include <map>
 #include <string>
 #include <sstream>
 using std::string;
 using std::endl;
-
+using std::map;
 #include "produto.h"
 #include "subproduto.h"
 #include "lista.h"
@@ -32,7 +33,7 @@ using std::endl;
         private:
             string RSocial;                                     /**< Razao social */
             string CNPJ;                                        /**< CNPJ */
-            Lista<Produto*> *produtos;                          /**< Lista de produtos duplamente ligada */
+            map<string, Produto*> produtos;                          /**< Lista de produtos duplamente ligada */
     public:
         Fornecedor();                                           /**< Construtor padrão */
         ~Fornecedor();                                          /**< Destrutor padrão */
@@ -45,11 +46,11 @@ using std::endl;
         
         int getQtde();                                          /**< Retorna a quantidade de Produtos */
         
-        Lista<Produto*> *getProdutos();                          /**< Retorna a lista de Produtos */
-        void setProdutos(Lista<Produto*> *p);                    /**< Modifica a lista de Produtos */
+        map<string, Produto*> getProdutos();                          /**< Retorna a lista de Produtos */
+        void setProdutos(map<string, Produto*> p);                    /**< Modifica a lista de Produtos */
         
         bool addProduto(Produto *p);                             /**< Adiciona um Produto */
-        bool delProduto(int p);                                 /**< Remove um Produto */
+        bool delProduto(string p);                                 /**< Remove um Produto */
         
         bool pertenceFornecedor(string n);                      /**< Verifica se um codigo de barra pertence à lista de Produto */
         
