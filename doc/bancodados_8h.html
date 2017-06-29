@@ -422,6 +422,19 @@ template&lt;typename T &gt; </div>
 <dl class="params"><dt>Parâmetros</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*e</td><td><a class="el" href="classLista.html" title="Classe que representa uma lista duplamente encadeada. ">Lista</a> de objetos </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pausa</td><td>True para apresentar uma pausa após a impressão</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>int selecao = selecionaObjeto(e, "Digite o número do fornecedor para a edição do produto (0 para cancelar): "); if(selecao &gt;= 0) { <a class="el" href="classFornecedor.html" title="Classe que representa um Fornecedor. ">Fornecedor</a> *f = e-&gt;Posiciona(selecao); selecao = selecionaObjeto(f-&gt;getProdutos(), "Selecione o número do produto para a edição (0 para cancelar): "); if(selecao &gt; 0) { <a class="el" href="classProduto.html" title="Classe que representa um Produto. ">Produto</a> *p = *(f-&gt;getProdutos())-&gt;Posiciona(selecao);</p>
+<p>string input;</p>
+<p>cout &lt;&lt; "O código é: " &lt;&lt; p-&gt;getCb() &lt;&lt; " (ENTER para manter): "; getline(cin, input); if(input != "") p-&gt;setCb(input);</p>
+<p>cout &lt;&lt; "A descrição é: " &lt;&lt; p-&gt;getDescricao() &lt;&lt; " (ENTER para manter): "; getline(cin, input); if(input != "") p-&gt;setDescricao(input);</p>
+<p>cout &lt;&lt; "O tipo é: " &lt;&lt; p-&gt;getTipo() &lt;&lt; " (ENTER para manter): "; getline(cin, input); if(input != "") p-&gt;setTipo(input);</p>
+<p>stringstream ss; ss &lt;&lt; "O preço é: " &lt;&lt; p-&gt;getPreco() &lt;&lt; " (0 para manter): "; input = ss.str(); float preco = recebeFloat(input, 0); if(preco &gt; 0) p-&gt;setPreco(preco);</p>
+<p>ss.clear(); ss &lt;&lt; "A quantidade é: " &lt;&lt; p-&gt;getQtde() &lt;&lt; " (0 para manter): "; input = ss.str(); float qtde = recebeInt(input, 0); if(qtde &gt; 0) p-&gt;setQtde(qtde); } } } </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">*e</td><td><a class="el" href="classLista.html" title="Classe que representa uma lista duplamente encadeada. ">Lista</a> de objetos </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pausa</td><td>True para apresentar uma pausa após a impressão </td></tr>
   </table>
   </dd>
@@ -857,7 +870,7 @@ template&lt;typename T &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Gerado em Quarta, 28 de Junho de 2017 18:30:11 para Projeto 3 por &#160;<a href="http://www.doxygen.org/index.html">
+Gerado em Quinta, 29 de Junho de 2017 14:10:15 para Projeto 3 por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -21,7 +21,7 @@ var searchData=
   ['getnum',['getNum',['../classFruta.html#aa1728d5931c6e086389f83ce1f357485',1,'Fruta']]],
   ['getpreco',['getPreco',['../classProduto.html#a53548783d7fad3ea6d5e000fa2227dcf',1,'Produto']]],
   ['getproduto',['getProduto',['../classVenda.html#a57fd97cc646b69f95d1efaeba7c2f1a6',1,'Venda']]],
-  ['getprodutos',['getProdutos',['../classFornecedor.html#aa04da1ee81d954677a63718b0492c66a',1,'Fornecedor']]],
+  ['getprodutos',['getProdutos',['../classFornecedor.html#a37d92df57ba0ce90b8811e0500618187',1,'Fornecedor']]],
   ['getproximo',['getProximo',['../classLista.html#a5360feacbcc0f09d813f49fcde15a6cc',1,'Lista']]],
   ['getqtde',['getQtde',['../classFornecedor.html#a69e725256294debcd9b75337ce0f9e21',1,'Fornecedor::getQtde()'],['../classProduto.html#a6946a9b51c9f90635df6aaa772c1bf9b',1,'Produto::getQtde()'],['../classVenda.html#a198b9538b70061ac5ff460711b7316da',1,'Venda::getQtde()']]],
   ['getrsocial',['getRSocial',['../classFornecedor.html#ae56ac8b42e36991fc20325facf754055',1,'Fornecedor']]],

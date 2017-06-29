@@ -141,22 +141,27 @@ void addPr(Lista<Fornecedor> *e) {
 * @param[in]    *e Lista de fornecedores do cadastro
 */
 void delPr(Lista<Fornecedor> *e) {
+    string cod = "";
     int selecao = selecionaObjeto(e, "Digite o número do fornecedor para a remoção do produto (0 para cancelar): ");
     if(selecao >= 0) {
         Fornecedor *tmp = e->Posiciona(selecao);
         //selecao = selecionaObjeto(f->getProdutos(), "Selecione o número do produto para a remoção (0 para cancelar): ");
-        Lista<Produto*> f = *tmp->getProdutos();
+        map<string, Produto*> f = tmp->getProdutos();
         Produto *produt;
+        std::map<string, Produto*>::iterator it=f.begin();
         for(int i = 0; i < tmp->getQtde(); i++) {
-            f = *f.getProximo();
-            produt = *f.getValor();
+            it++;
+            produt = it->second;
             cout << "   (" << (i + 1) << ") ";
             imprimir(produt);
         }
         selecao = recebeInt("Selecione o número do produto para a remoção (0 para cancelar): ", 0, tmp->getQtde());
         selecao--;
-        if(selecao >= 0)
-            tmp->delProduto(selecao);
+        if(selecao >= 0){
+            cout << "Digite o codigo do produto para a remoção: " << endl;
+            cin >> cod;
+            tmp->delProduto(cod);
+        }
     }
 }
 
@@ -164,7 +169,7 @@ void delPr(Lista<Fornecedor> *e) {
 * @brief        Função que edita um produto de um Fornecedor (apresenta escolha)
 * @param[in]    *e Lista de Fornecedores do cadastro
 */
-void editPr(Lista<Fornecedor> *e) {
+void editPr(Lista<Fornecedor> *e) {}/**
     int selecao = selecionaObjeto(e, "Digite o número do fornecedor para a edição do produto (0 para cancelar): ");
     if(selecao >= 0) {
         Fornecedor *f = e->Posiciona(selecao);
@@ -205,7 +210,7 @@ void editPr(Lista<Fornecedor> *e) {
         }
     }
 }
-
+*/
 /**
 * @brief        Função que imprime os objetos na lista
 * @param[in]    *e Lista de objetos
@@ -236,11 +241,12 @@ int impPr(Lista<Fornecedor> *e, bool all, bool pausa) {
         Fornecedor *tmp = e->Posiciona(selecao);
         if(tmp->getQtde() > 0) {
             cout << "Produtos do fornecedor " << tmp->getRSocial() << endl;
-            Lista<Produto*> *f = tmp->getProdutos();
+            map<string, Produto*> f = tmp->getProdutos();
             Produto *produt;
+            std::map<string, Produto*>::iterator it = f.begin();
             for(int i = 0; i < tmp->getQtde(); i++) {
-                f = f->getProximo();
-                produt = *f->getValor();
+                it++;
+                produt = it->second;
                 cout << "   (" << (i + 1) << ") ";
                 imprimir(produt);
                 cout << endl;
@@ -258,11 +264,12 @@ int impPr(Lista<Fornecedor> *e, bool all, bool pausa) {
         Lista<Fornecedor> *tmp = e->getProximo();
         while(tmp) {
             cout << "Produtos do fornecedor " << tmp->getValor()->getRSocial() << endl;
-            Lista<Produto*> f = *(tmp->getValor())->getProdutos();
+            map<string, Produto*> f = (tmp->getValor())->getProdutos();
             Produto *produt;
+            std::map<string, Produto*>::iterator it = f.begin();
             for(int i = 0; i < tmp->getValor()->getQtde(); i++) {
-                f = *f.getProximo();
-                produt = *f.getValor();
+                it++;
+                produt = it->second;
                 cout << "   (" << (i + 1) << ") ";
                 imprimir(produt);
                 cout << endl;
@@ -332,11 +339,12 @@ int impPrLista(Lista<Fornecedor> *e, int filtro, bool pausa) {
     Lista<Fornecedor> *tmp = e->getProximo();
     int j = 0;
     while(tmp) {
-        Lista<Produto*> *f = tmp->getValor()->getProdutos();
+        map<string, Produto*> f = tmp->getValor()->getProdutos();
         Produto *produt;
+        std::map<string, Produto*>::iterator it = f.begin();
         for(int i = 0; i < tmp->getValor()->getQtde(); i++) {
-            f = f->getProximo();
-            produt = *f->getValor();
+            it++;
+            produt = it->second;
             string tip = produt->getTipo();
             minusculas(tip);
             switch(filtro) {
@@ -515,7 +523,7 @@ int selecionaObjeto(Lista<T> *e, string msg) {
 */
 Produto *capturaProduto(Lista<Fornecedor> *e, int pos) {
     Lista<Fornecedor> *tmp = e;
-    Lista<Produto*> *p;
+    map<string, Produto*> p;
     Produto *retorno;
     int j = 1;
     while(tmp && j <= pos) {
@@ -525,7 +533,12 @@ Produto *capturaProduto(Lista<Fornecedor> *e, int pos) {
         j += tmp->getValor()->getQtde();
         tmp = tmp->getProximo();
     }
-    retorno = *p->Posiciona(pos - j);
+    std::map<string, Produto*>::iterator it = p.begin();
+    int cont=0;
+    while(cont < pos){
+        it++;
+    }
+    retorno = (it->second);
 
     return retorno;
 }
@@ -584,7 +597,7 @@ void venda_add(Lista<Fornecedor> *e, Lista<Venda> *v) {
     Venda *nova = new Venda();
 
     Lista<Fornecedor> *tmp = e->getProximo();
-    Lista<Produto*> *p;
+    map<string, Produto*> p;
     Produto *retorno;
     int j = 1;
     while(tmp && j <= selecao) {
@@ -594,7 +607,12 @@ void venda_add(Lista<Fornecedor> *e, Lista<Venda> *v) {
         j += tmp->getValor()->getQtde();
         tmp = tmp->getProximo();
     }
-    retorno = *p->Posiciona(selecao - j);
+    std::map<string, Produto*>::iterator it = p.begin();
+    int cont=0;
+    while(cont < selecao - j){
+        it++;
+    }
+    retorno = (it->second);
 
     nova->setProduto(retorno);
 
@@ -679,11 +697,12 @@ int impPrListaEstoque(Lista<Fornecedor> *e, bool pausa) {
             cout << "  Código" << string(4, ' ') << "\t|Descrição" << string(21, ' ') << "\t|Quantidade" << endl;
             primeiro = false;
         }
-        Lista<Produto*> *f = tmp->getValor()->getProdutos();
+        map<string, Produto*> f = tmp->getValor()->getProdutos();
         Produto *produt;
+        std::map<string, Produto*>::iterator it = f.begin();
         for(int i = 0; i < tmp->getValor()->getQtde(); i++) {
-            f = f->getProximo();
-            produt = *f->getValor();
+            it++;
+            produt = it->second;
             cout << "  " << produt->getEstoque() << endl;
         }
         tmp = tmp->getProximo();

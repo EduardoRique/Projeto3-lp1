@@ -23,7 +23,7 @@ var searchData=
   ['setnum',['setNum',['../classFruta.html#a4b662c42674b7ab5e620ec0835c3debc',1,'Fruta']]],
   ['setpreco',['setPreco',['../classProduto.html#a545e2ae110e02bd7a0ab89d1c64e1614',1,'Produto']]],
   ['setproduto',['setProduto',['../classVenda.html#adde5ba035e2809875b97a52a5e3a0178',1,'Venda']]],
-  ['setprodutos',['setProdutos',['../classFornecedor.html#a5c1986e48ad51b51ce87d74639a06a50',1,'Fornecedor']]],
+  ['setprodutos',['setProdutos',['../classFornecedor.html#a1db29c2cebfbb41229a9095e2d0394e6',1,'Fornecedor']]],
   ['setqtde',['setQtde',['../classProduto.html#afffd52a9f532cf165d6e9f30c3a7e68c',1,'Produto::setQtde()'],['../classVenda.html#ad73bf49cb773a0aefaa6adfd7dba5e04',1,'Venda::setQtde()']]],
   ['setrsocial',['setRSocial',['../classFornecedor.html#a8c01b2315d2281e00acbd78de3502990',1,'Fornecedor']]],
   ['setsodio',['setSodio',['../classSalgado.html#a10f39575129a96a1a97e02b8247d7222',1,'Salgado']]],
